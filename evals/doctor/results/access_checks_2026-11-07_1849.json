@@ -1,0 +1,74 @@
+{
+  "run_at": "2026-11-07T23:49:25Z",
+  "base_url": "http://127.0.0.1:8000",
+  "passed": 11,
+  "total": 11,
+  "results": [
+    {
+      "section": "Access control",
+      "check": "Company role cannot reach any relay endpoint",
+      "pass": true,
+      "detail": "6 endpoints all 403"
+    },
+    {
+      "section": "Access control",
+      "check": "A doctor cannot read another doctor's envelopes",
+      "pass": true,
+      "detail": "other path 403, other actor 403"
+    },
+    {
+      "section": "Access control",
+      "check": "A doctor without a care link sees no patients",
+      "pass": true,
+      "detail": "404, 0 patient(s)"
+    },
+    {
+      "section": "Access control",
+      "check": "A patient cannot send an envelope to a doctor without a care link",
+      "pass": true,
+      "detail": "-> 403"
+    },
+    {
+      "section": "Access control",
+      "check": "Requests without X-Role / X-Actor-Id are refused",
+      "pass": true,
+      "detail": "-> 401"
+    },
+    {
+      "section": "Access control",
+      "check": "Revoking consent stops the next envelope",
+      "pass": true,
+      "detail": "envelope -> 403; pt_4b82d0c6 listed: False"
+    },
+    {
+      "section": "End to end",
+      "check": "Walter's envelope reaches the doctor within 1 minute",
+      "pass": true,
+      "detail": "send 201, visible after 0.0s"
+    },
+    {
+      "section": "Privacy",
+      "check": "Relay returns only ciphertext for the doctor",
+      "pass": true,
+      "detail": "361 bytes, parses as JSON: False, plaintext markers: 0"
+    },
+    {
+      "section": "End to end",
+      "check": "Doctor can acknowledge the envelope",
+      "pass": true,
+      "detail": "-> 200"
+    },
+    {
+      "section": "End to end",
+      "check": "Severe alert reaches doctor and caregiver",
+      "pass": true,
+      "detail": "doctor True, caregiver True, after 0.0s"
+    },
+    {
+      "section": "Privacy",
+      "check": "Caregiver alert has no symptom details (AL-03)",
+      "pass": true,
+      "detail": "fields: alert_id, alert_type, created_at, patient_ref"
+    }
+  ]
+}
