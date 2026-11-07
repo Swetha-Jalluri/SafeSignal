@@ -126,4 +126,6 @@ Work is pushed as a stack of branches, one per component. Each branch builds on 
 | 3 | `doctor/doctor-view` | `DoctorView`, `Timeline`, `PreVisitSummary`, `AlertsPanel`, `DevPanel`, doctor route |
 | 4 | `doctor/caregiver-view` | `CaregiverView`, `#/caregiver` route |
 
+Separate from the stack: `doctor/access-checks` (off `main`) holds `evals/doctor/`, the doctor-side 26.15 checks.
+
 Run `scripts/check_ownership.sh` before every push. Never push to `main` directly.

@@ -8,11 +8,14 @@ Newest first. Per session: what was done, state at the end, next steps.
 - Trimmed `CLAUDE.md` to the essentials; added DW-14 (one branch per component).
 - Split the work into stacked branches: `doctor/scaffold` → `doctor/sync-engine` → `doctor/doctor-view` → `doctor/caregiver-view`, each building on its own, and pushed them. `doctor/doctor-web-v1` is replaced by these.
 
+- Opened stacked PRs #1–#4.
+- Added `evals/doctor/access_checks.py` on `doctor/access-checks`; 11/11 pass on the stub (missed alert skipped: no scheduler). Results in `evals/doctor/results/`.
+
 **State**
 - Branches pushed, not merged. The four open requests in `DECISIONS.md` are still with the company owner.
 
 **Next**
-1. Open PRs in stack order (or merge with `--ff-only` after review).
+1. Review and merge PRs #1–#4 in order, then the access-checks PR. Rerun `evals/doctor/access_checks.py` after each service switch-over (H3, H5).
 2. Switch to the real patient runtime when it sends envelopes; run the 26.15 Doctor and Access-control checks at H6.
 3. Credits work (Gradium clips, Exa label facts) once keys are in `.env.local`.
 

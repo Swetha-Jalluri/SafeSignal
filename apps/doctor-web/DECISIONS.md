@@ -4,6 +4,7 @@ This app's own decisions, newest first. Repo-wide decisions are in `docs/DECISIO
 
 | # | Date | Decision | Why | By |
 |---|---|---|---|---|
+| DW-15 | 2026-11-07 | Doctor-side 26.15 checks live in `evals/doctor/` on their own branch `doctor/access-checks` (off `main`) | Evals are a separate component and don't depend on the app stack | Claude |
 | DW-14 | 2026-11-07 | Push as stacked branches, one per component: `doctor/scaffold` → `doctor/sync-engine` → `doctor/doctor-view` → `doctor/caregiver-view` | Smaller reviews; never touch `main` directly | User |
 | DW-13 | 2026-11-07 | Selection follows the most urgent patient until the doctor clicks one | A new severe alert should surface without a click | Claude |
 | DW-12 | 2026-11-07 | Revoked patients move to a collapsed "No longer shared" list, read-only, with a banner (supersedes DW-03) | D-038: keep decrypted data and mark the patient | Repo |
@@ -34,3 +35,4 @@ Rule: no cloud service touches patient data. Credits are spent at build time on 
 2. **D-039:** record "caregiver view in doctor-web" and add `GET /v1/caregivers/{id}/alerts` to the doctor brief's allowed calls.
 3. **CODEOWNERS:** replace `@DOCTOR_OWNER` with the doctor owner's GitHub handle (D-046).
 4. **Audio:** root `.gitignore` drops `*.mp3`/`*.wav`. Gradium clips are synthetic, non-patient audio: allow a path (for example `apps/doctor-web/public/audio/`) or regenerate them at build time.
+5. **Check order (minor):** relay endpoints validate the body before the role, so a company user with a malformed body gets 422, not 403. Nothing leaks; checking role first would make 26.15 "company role → 403" hold for any body.

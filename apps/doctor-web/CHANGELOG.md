@@ -3,6 +3,8 @@
 Changes in this app, newest first. Owned by this app's owner (root `CLAUDE.md`).
 
 ## 2026-11-07
+- Added: `evals/doctor/access_checks.py` (branch `doctor/access-checks`): doctor-side 26.15 checks, 11/11 pass on the stub service.
+- Changed: `.gitignore` ignores the `.vite/` dev cache.
 - Added: `ARCHITECTURE.md` (system, app and sequence diagrams; component branches).
 - Changed: `CLAUDE.md` trimmed; points to architecture, decisions and session log.
 - Added: doctor view (DR-01..04): consented patient list sorted by urgency, 21-day symptom grid, severity chart, template pre-visit summary, alerts panel with mark-seen.
